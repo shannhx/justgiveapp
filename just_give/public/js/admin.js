@@ -34,16 +34,27 @@ $(function(){
       firebase.initializeApp(config);
       
       var database = firebase.database();
-      var appeals = database.ref("appealssss");
+      var appeals = database.ref("Appealssss").child("Clothing");
        
       $('#form1').on('submit', event => {
           event.preventDefault();
-          const category = $('#category').val();
+          const category = "Clothing";
+          const gender = $('#inputGender').val();
           const numReq = $('#inputNumber').val();
-          alert("Category: " + category + " InputNum: " + numReq);
+          const item = $('#inputItem').val();
+          const size = $('#inputSize').val();
+          const itemCondition = $('#inputCondition').val();
+          const dropOffLocation = $('#inputCity').val();
+          const maxNum = $('#inputMaxNum').val();
+          alert(category + " " + gender + " " + numReq + " " + item + " " + size + " " + itemCondition + " " + dropOffLocation + " " + maxNum);
           appeals.push({
-              "Category": category,
-              "Number Required": numReq
+              "gender": gender,
+              "numRequired": numReq,
+              "item": item,
+              "size": size,
+              "condition": itemCondition,
+              "location": dropOffLocation,
+              "MaxNum": maxNum
           });
       });
   });

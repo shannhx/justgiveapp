@@ -24,7 +24,7 @@
   </head>
 
   <body>
-
+    <!-- navigation bar -->
     <nav class="navbar navbar-expand-md navbar-default">
       <a class="navbar-brand" href="#">JustGive | Admin</a>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
@@ -63,12 +63,10 @@
                   <form>
           <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="category">Category</label>
-              <select id="category" class="form-control">
-                <option selected>Clothing</option>
-                <option>Food</option>
-                <option>Household</option>
-                <option>Misc</option>
+                <label for="inputGender">Gender</label>
+              <select id="inputGender" class="form-control">
+                <option selected>Male</option>
+                <option>Female</option>
               </select>
             </div>
             <div class="form-group col-md-6">
@@ -77,28 +75,32 @@
             </div>
           </div>
           <div class="form-group">
-              <label for="inputAddress2">Item</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="Shoes...">
+              <label for="inputItem">Item</label>
+            <input type="text" class="form-control" id="inputItem" placeholder="Shoes...">
           </div>
           <div class="form-group">
-            <label for="inputAddress">Description</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Mens Shoes size 9">
+            <label for="inputSize">Size</label>
+            <input type="text" class="form-control" id="inputSize" placeholder="e.g. Any, UK 12...">
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="inputState">City</label>
-              <select id="inputState" class="form-control">
-                <option selected>Belfast</option>
-                <option>Derry</option>
+              <label for="inputCondition">Condition</label>
+              <select id="inputCondition" class="form-control">
+                <option selected>Any</option>
+                <option>New</option>
+                <option>Used</option>
               </select>
             </div>
             <div class="form-group col-md-4">
-              <label for="inputEmail4">Max Number</label>
-              <input type="email" class="form-control" id="inputEmail4" placeholder="0">
+              <label for="inputCity">City</label>
+              <select id="inputCity" class="form-control">
+                <option selected>Derry</option>
+                <option>Belfast</option>
+              </select>
             </div>
             <div class="form-group col-md-2">
-              <label for="inputZip">Zip</label>
-              <input type="text" class="form-control" id="inputZip">
+              <label for="inputMaxNum">Maximum</label>
+              <input type="number" step="1" class="form-control" id="inputMaxNum">
             </div>
           </div>
           <div class="form-group">
