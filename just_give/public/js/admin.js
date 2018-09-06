@@ -1,5 +1,9 @@
+function myFunction(evt, catName){
+    openCat(evt, catName);
+}
+
 //show tab content
-function openCat(evt, catName) {
+function openCat(evt, pcatName) {
     // Declare all variables
     var i, tabcontent, tablinks;
 
@@ -16,10 +20,9 @@ function openCat(evt, catName) {
     }
 
     // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(catName).style.display = "block";
+    document.getElementById(pcatName).style.display = "block";
     evt.currentTarget.className += " active";
 }
-
 
 $(function(){
       // Initialize Firebase
@@ -32,12 +35,14 @@ $(function(){
         messagingSenderId: "790221386512"
       };
       firebase.initializeApp(config);
+    
+          var database = firebase.database();
+          var appeals = database.ref("Appealssss");
+          const id = appeals.push().getKey();
+    
       
-      var database = firebase.database();
-      var appeals = database.ref("Appealssss").child("Clothing");
-       
       $('#form1').on('submit', event => {
-          event.preventDefault();
+          //event.preventDefault();
           const category = "Clothing";
           const gender = $('#inputGender').val();
           const numReq = $('#inputNumber').val();
@@ -47,7 +52,9 @@ $(function(){
           const dropOffLocation = $('#inputCity').val();
           const maxNum = $('#inputMaxNum').val();
           alert(category + " " + gender + " " + numReq + " " + item + " " + size + " " + itemCondition + " " + dropOffLocation + " " + maxNum);
-          appeals.push({
+          appeals.child(category).child(id).set({
+              "appealid": id,
+              "category": category,
               "gender": gender,
               "numRequired": numReq,
               "item": item,
@@ -58,6 +65,7 @@ $(function(){
           });
       });
   });
+
 
 
 /*var appeals = firebase.database().ref("appeals");
