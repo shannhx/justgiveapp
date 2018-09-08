@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>JustGive - Admin</title>
+
+    <!-- Styling -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="starter-template.css" rel="stylesheet">
+      
+    <!-- add firebase -->
+      <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+      
+      <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-app.js"></script>
+      
+      <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-database.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-firestore.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-messaging.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-functions.js"></script>  
+      
+      </head>
+        <body id="LoginForm">
+        <div class="container">
+        <div class="login-form">
+        <div class="main-div">
+            <div class="panel">
+            <img src="logo_transparent.png" width= "80%" height="80%">
+           <h2>Administrator Login</h2>
+           </div>
+            <div id ="login">
+            <form>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                </div>
+                <div class="forgot">
+                <a href="reset.html">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary" onClick="submitForm">Login</button>
+            </form>
+            </div>
+            </div>
+           </div>
+        </div>
+        <main role="main" class="container">
+        </main>
+
+                    <!-- link to js bootstrap files -->
+                    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+                    <script src="js/bootstrap.min.js"></script>
+
+                    <!--Link to js files-->
+                    <script src="js/admin.js"></script>
+                  </body>
+                </html>

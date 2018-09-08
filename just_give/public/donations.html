@@ -61,112 +61,51 @@
     <!-- Tab content -->
         <!-- Clothing Form -->
         <div id="Clothing" class="tabcontent">
-          <h5 id="addClothing" style="padding-left:50px">Add Clothing Appeal</h5>
-          <div id="form1">
-                  <form>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="cInputGender">Gender</label>
-              <select id="cInputGender" class="form-control">
-                <option selected>Male</option>
-                <option>Female</option>
-                <option>All</option>
-              </select>
-            </div>
-            <div class="form-group col-md-6">
-              <label for="cInputNumber">Number Required</label>
-              <input type="number" step="1" class="form-control" id="cInputNumber" placeholder="Enter Value">
-            </div>
-          </div>
-          <div class="form-group">
-              <label for="cInputItem">Item</label>
-            <input type="text" class="form-control" id="cInputItem" placeholder="Shoes...">
-          </div>
-          <div class="form-group">
-            <label for="inputSize">Size</label>
-            <input type="text" class="form-control" id="inputSize" placeholder="e.g. Any, UK 12...">
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="cInputAge">Age Group</label>
-              <select id="cInputAge" class="form-control">
-                <option selected>Adult</option>
-                <option>Child</option>
-                <option>Baby</option>
-                <option>Any</option>
-              </select>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="cInputCity">City</label>
-              <select id="cInputCity" class="form-control">
-                <option selected>Derry</option>
-                <option>Belfast</option>
-              </select>
-            </div>
-            <div class="form-group col-md-2">
-              <label for="cInputMaxNum">Maximum</label>
-              <input type="number" step="1" class="form-control" id="cInputMaxNum">
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck">
-              <label class="form-check-label" for="gridCheck">
-                Urgent
-              </label>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary" onClick="submitForm">Submit</button>
-        </form>
-        </div>
-        </div>
+          <h5 id="clothingTable" style="padding-left:50px">Incoming Clothing Donations</h5>
+            <table id="clothTable" class = "tables">
+                <th>Id</th>
+                <th>Item</th> 
+                <th>Category</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Size</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact Number</th>
+            </table>
+      </div>
+            <!--<table class = "tables" id = "clothingTable">
+          <tr>
+            <th>Id</th>
+            <th>Category</th> 
+            <th>Item</th>
+            <th>Gender</th>
+            <th>Amount</th>
+            <th>Size</th>
+            <th>Age</th>
+            <th>Name</th>
+            <th>Contact Number</th>
+            <th>Email</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td> 
+            <td></td>
+            <td></td>
+            <td></td> 
+            <td></td>
+            <td></td>
+            <td></td> 
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+        </div> -->
         
         <!-- Food Form -->
-        <div id="Food" class="tabcontent">
-        <h5 id="addFood" style="padding-left:50px">Add Food Appeal</h5>
-          <div id="form2">
-                  <form>
-            <div class="form-group">
-              <label for="fInputNumber">Number Required</label>
-              <input type="number" step="1" class="form-control" id="fInputNumber" placeholder="Enter Value">
-            </div>
-          <div class="form-group">
-              <label for="fInputItem">Item</label>
-            <input type="text" class="form-control" id="fInputItem" placeholder="Pasta...">
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-            <label for="inputFoodType">Food Type</label>
-              <select id="inputFoodType" class="form-control">
-                <option selected>Dry</option>
-                <option>Canned</option>
-                <option>Fresh</option>
-              </select>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="fInputCity">City</label>
-              <select id="fInputCity" class="form-control">
-                <option selected>Derry</option>
-                <option>Belfast</option>
-              </select>
-            </div>
-            <div class="form-group col-md-2">
-              <label for="fInputMaxNum">Maximum</label>
-              <input type="number" step="1" class="form-control" id="fInputMaxNum">
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck">
-              <label class="form-check-label" for="gridCheck">
-                Urgent
-              </label>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary" onClick="submitForm">Submit</button>
-        </form>
-        </div>
-        </div>
 
         <!-- Household Form -->
         <div id="Household" class="tabcontent">
