@@ -42,7 +42,7 @@
         </form>
           <ul class="navbar-nav navbar-right">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html" id="log-out">Logout</a>
+            <a class="nav-link" href="index.html" id="log-out" onClick="logout()">Logout</a>
           </li>
         </ul>
       </div>
@@ -63,229 +63,94 @@
         <div id="Clothing" class="tabcontent">
           <h5 id="clothingTable" style="padding-left:50px">Incoming Clothing Donations</h5>
             <table id="clothTable" class = "tables">
-                <th>Id</th>
-                <th>Item</th> 
+                <th>Age Group</th>
+                <th>Donation Amount</th> 
                 <th>Category</th>
-                <th>Gender</th>
-                <th>Age</th>
-                <th>Size</th>
+                <th>Donation Date</th>
+                <th>Donation ID</th>
+                <th>Clothing Gender</th>
+                <th>Item</th>
                 <th>Location</th>
-                <th>Date</th>
-                <th>Amount</th>
-                <th>Name</th>
-                <th>Email</th>
+                <th>Size</th>
+                <th>Donator Name</th>
+                <th>Donator Email</th>
                 <th>Contact Number</th>
             </table>
       </div>
-            <!--<table class = "tables" id = "clothingTable">
-          <tr>
-            <th>Id</th>
-            <th>Category</th> 
-            <th>Item</th>
-            <th>Gender</th>
-            <th>Amount</th>
-            <th>Size</th>
-            <th>Age</th>
-            <th>Name</th>
-            <th>Contact Number</th>
-            <th>Email</th>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td> 
-            <td></td>
-            <td></td>
-            <td></td> 
-            <td></td>
-            <td></td>
-            <td></td> 
-            <td></td>
-            <td></td>
-          </tr>
-        </table>
-        </div> -->
         
         <!-- Food Form -->
+      <div id="Food" class="tabcontent">
+          <h5 id="foodTable" style="padding-left:50px">Incoming Food Donations</h5>
+            <table id="FoodTable" class = "tables">
+                <th>Donation Amount</th>
+                <th>Category</th> 
+                <th>Donation Date</th>
+                <th>Donation ID</th>
+                <th>Expiry Date</th>
+                <th>Item</th>
+                <th>Location</th>
+                <th>Donator Email</th>
+                <th>Donator</th>
+                <th>Contact Number</th>
+            </table>
+      </div>
 
         <!-- Household Form -->
         <div id="Household" class="tabcontent">
-          <h5 id="addHousehold" style="padding-left:50px">Add Household Item Appeal</h5>
-          <div id="form3">
-                  <form>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="hInputType">Type</label>
-              <select id="hInputType" class="form-control">
-                <option selected>Electrical Appliance</option>
-                <option>Furniture</option>
-                <option>Cleaning Products</option>
-                <option>Bedding</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="form-group col-md-6">
-              <label for="hInputNumber">Number Required</label>
-              <input type="number" step="1" class="form-control" id="hInputNumber" placeholder="Enter Value">
-            </div>
-          </div>
-          <div class="form-group">
-              <label for="hInputItem">Item</label>
-            <input type="text" class="form-control" id="hInputItem" placeholder="Duvet...">
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="hInputCondition">Condition</label>
-              <select id="hInputCondition" class="form-control">
-                <option selected>Any</option>
-                <option>New</option>
-                <option>Used</option>
-              </select>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="hInputCity">City</label>
-              <select id="hInputCity" class="form-control">
-                <option selected>Derry</option>
-                <option>Belfast</option>
-              </select>
-            </div>
-            <div class="form-group col-md-2">
-              <label for="hInputMaxNum">Maximum</label>
-              <input type="number" step="1" class="form-control" id="hInputMaxNum">
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck">
-              <label class="form-check-label" for="gridCheck">
-                Urgent
-              </label>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary" onClick="submitForm">Submit</button>
-        </form>
-        </div>
-        </div>
+          <h5 id="householdTable" style="padding-left:50px">Household Item Donations</h5>
+          <table id="homeTable" class = "tables">
+                <th>Donation Amount</th>
+                <th>Category</th> 
+                <th>Condition</th>
+                <th>Donation Date</th>
+                <th>Donation ID</th>
+                <th>Item</th>
+                <th>Location</th>
+                <th>Type</th>
+                <th>Donator Email</th>
+                <th>Donator</th>
+                <th>Contact Number</th>
+            </table>
+      </div>
 
+      
       <!--Hygiene Product Form -->
       <div id="Hygiene" class="tabcontent">
-          <h5 id="addHygiene" style="padding-left:50px">Add Hygiene Product Appeal</h5>
-          <div id="form4">
-          <form>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="hyInputGender">Gender</label>
-              <select id="hyInputGender" class="form-control">
-                <option selected>Male</option>
-                <option>Female</option>
-                <option>All</option>
-              </select>
-            </div>
-            <div class="form-group col-md-6">
-              <label for="hyInputNumber">Number Required</label>
-              <input type="number" step="1" class="form-control" id="hyInputNumber" placeholder="Enter Value">
-            </div>
-          </div>
-          <div class="form-group">
-              <label for="hyInputItem">Item</label>
-            <input type="text" class="form-control" id="hyInputItem" placeholder="Shampoo...">
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="hyInputAge">Age Group</label>
-              <select id="hyInputAge" class="form-control">
-                <option selected>Adult</option>
-                <option>Child</option>
-                <option>Baby</option>
-                <option>Any</option>
-              </select>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="hyInputCity">City</label>
-              <select id="hyInputCity" class="form-control">
-                <option selected>Derry</option>
-                <option>Belfast</option>
-              </select>
-            </div>
-            <div class="form-group col-md-2">
-              <label for="hyInputMaxNum">Maximum</label>
-              <input type="number" step="1" class="form-control" id="hyInputMaxNum">
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck">
-              <label class="form-check-label" for="gridCheck">
-                Urgent
-              </label>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary" onClick="submitForm">Submit</button>
-        </form>
-        </div>
-        </div>
+          <h5 id="hygieneTable" style="padding-left:50px">Hygiene Product Donations</h5>
+          <table id="hygTable" class = "tables">
+                <th>Age Group</th>
+                <th>Donation Amount</th> 
+                <th>Category</th>
+                <th>Donation Date</th>
+                <th>Donation ID</th>
+                <th>Gender</th>
+                <th>Item</th>
+                <th>Location</th>
+                <th>Donator Email</th>
+                <th>Donator</th>
+                <th>Contact Number</th>
+            </table>
+      </div>
+
       
     
         <!-- Kids Form -->
-        <!-- Clothing Form -->
         <div id="Kids" class="tabcontent">
-          <h5 id="addKids" style="padding-left:50px">Add Kids Appeal</h5>
-          <div id="form5">
-                  <form>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="kInputGender">Gender</label>
-              <select id="kInputGender" class="form-control">
-                <option selected>Boy</option>
-                <option>Girl</option>
-                <option>All</option>
-              </select>
-            </div>
-            <div class="form-group col-md-6">
-              <label for="kInputNumber">Number Required</label>
-              <input type="number" step="1" class="form-control" id="kInputNumber" placeholder="Enter Value">
-            </div>
-          </div>
-          <div class="form-group">
-              <label for="kInputItem">Item</label>
-            <input type="text" class="form-control" id="kInputItem" placeholder="Colouring Books...">
-          </div>
-          <div class="form-group">
-            <label for="inputAge">Age</label>
-            <input type="text" class="form-control" id="inputAge" placeholder="e.g. 3 - 5 Years">
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="kInputCondition">Condition</label>
-              <select id="kInputCondition" class="form-control">
-                <option selected>Any</option>
-                <option>New</option>
-                <option>Used</option>
-              </select>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="kInputCity">City</label>
-              <select id="kInputCity" class="form-control">
-                <option selected>Derry</option>
-                <option>Belfast</option>
-              </select>
-            </div>
-            <div class="form-group col-md-2">
-              <label for="kInputMaxNum">Maximum</label>
-              <input type="number" step="1" class="form-control" id="kInputMaxNum">
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck">
-              <label class="form-check-label" for="gridCheck">
-                Urgent
-              </label>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary" onClick="submitForm">Submit</button>
-        </form>
-        </div>
-        </div>
+          <h5 id="tableKids" style="padding-left:50px">Add Kids Appeal</h5>
+          <table id="kidsTable" class = "tables">
+                <th>Age Group</th>
+                <th>Donation Amount</th> 
+                <th>Category</th>
+                <th>Donation Date</th>
+                <th>Donation ID</th>
+                <th>Gender</th>
+                <th>Item</th>
+                <th>Location</th>
+                <th>Donator Email</th>
+                <th>Donator</th>
+                <th>Contact Number</th>
+            </table>
+      </div>
       
         <!-- Misc Form -->
         <div id="Misc" class="tabcontent">
