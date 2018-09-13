@@ -1,16 +1,20 @@
-$(function(){
-      // Initialize Firebase
-      const config = {
-        apiKey: "AIzaSyAGZ3bx1nYXtx2zmIN3n5f4A-Q794hfRT8",
-        authDomain: "justgive-95931.firebaseapp.com",
-        databaseURL: "https://justgive-95931.firebaseio.com",
-        projectId: "justgive-95931",
-        storageBucket: "justgive-95931.appspot.com",
-        messagingSenderId: "790221386512"
-      };
-      firebase.initializeApp(config);
+//login method
+function login(){
+    event.preventDefault();
+    var email = document.getElementById('inputEmail').value;
+    var pass = document.getElementById('inputPassword').value;
     
-          var database = firebase.database();
+    firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log("Error: " + errorMessage);
+});
+}
 
-   
-    });
+firebase.auth().onAuthStateChanged(function(user) {
+  this.user = firebase.auth().currentUser;
+    if(this.user){
+        location = "admin.html";
+    }
+});

@@ -12,54 +12,28 @@ firebase.initializeApp(config);
 //set gobal variables
 var database = firebase.database();
 var appeals = database.ref("Appeals");
+var donated = database.ref("Delivered");
 var donations = database.ref("Donations");
+//get child key on push
 const id = appeals.push().getKey();
-    
 
-        
-    //when user login state changes
-firebase.auth().onAuthStateChanged(function(user) {
-    //get current user
-    var user = firebase.auth().currentUser;
-        //if user exists/doesnt exist
-        if (user) {
-            console.log("Logged In Motha Fuckas");
-        } else {
-            console.log("Not logged in mucker, try again");
-        } 
-        //get users email to test if i can grab values
-        if(user != null){
-            var email_id = user.email;
-            alert(email_id);
-        } else {
-            console.log("No email");
-        }
-            
-});    
-        
-//login method
-function login(){
-    var email = document.getElementById('inputEmail').value;
-    var pass = document.getElementById('inputPassword').value;
+//firebase.auth().createUserWithEmailAndPassword("admin@justgive.com", "password").catch(function(error) {
+//  // Handle Errors here.
+//  var errorCode = error.code;
+//  var errorMessage = error.message;
+//  console.log("Error: " + errorMessage);
+//});
 
-        firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-
-            console.log("Error: " + errorMessage);
-        });
-}
-
+//logout method
 function logout(){
     firebase.auth().signOut().then(function() {
-        // Sign-out successful.
+        console.log("Sign out successful");
         }).catch(function(error) {
-          // An error happened.
+          console.log(error);
         });
 }
-    
-//clothing appeals from form
+
+//clothing appeals form
 $('#form1').on('submit', event => {
     //event.preventDefault();
     const category = "Clothing";
@@ -70,7 +44,9 @@ $('#form1').on('submit', event => {
     const age = $('#cInputAge').val();
     const dropOffLocation = $('#cInputCity').val();
     const maxNum = $('#cInputMaxNum').val();
-    alert(category + " " + gender + " " + numReq + " " + item + " " + size + " " + age + " " + dropOffLocation + " " + maxNum);
+    
+    //push user input to firebase
+    alert("Appeal for " + item + " added successfully.");
     appeals.child(category).child(id).set({
       "appealid": id,
       "category": category,
@@ -84,16 +60,18 @@ $('#form1').on('submit', event => {
     });
 });
     
-//food appeals from form
+//food appeals form
 $('#form2').on('submit', event => {
-      //event.preventDefault();
+      //get input values
       const category = "Food";
       const numReq = $('#fInputNumber').val();
       const item = $('#fInputItem').val();
       const foodType = $('#inputFoodType').val();
       const dropOffLocation = $('#fInputCity').val();
       const maxNum = $('#fInputMaxNum').val();
-      alert(category + " " + numReq + " " + item + " " + foodType + " " + dropOffLocation + " " + maxNum);
+      alert("Appeal for " + item + " added successfully.");
+      
+      //push user input to firebase
       appeals.child(category).child(id).set({
           "appealid": id,
           "category": category,
@@ -105,9 +83,9 @@ $('#form2').on('submit', event => {
       });
 });
     
-//Household appeals from form
+//Household appeals form
 $('#form3').on('submit', event => {
-      //event.preventDefault();
+      //get input values
       const category = "Household";
       const type = $('#hInputType').val();
       const numReq = $('#hInputNumber').val();
@@ -115,7 +93,9 @@ $('#form3').on('submit', event => {
       const condition = $('#hInputCondition').val();
       const dropOffLocation = $('#hInputCity').val();
       const maxNum = $('#hInputMaxNum').val();
-      alert(category + " " + type + " " + numReq + " " + item + " " + condition + " " + dropOffLocation + " " + maxNum);
+      alert("Appeal for " + item + " added successfully.");
+        
+      //push user input to firebase
       appeals.child(category).child(id).set({
           "appealid": id,
           "category": category,
@@ -128,9 +108,9 @@ $('#form3').on('submit', event => {
       });
 });
         
-//Hygiene appeals from form
+//Hygiene appeals form
 $('#form4').on('submit', event => {
-      //event.preventDefault();
+      //get input values
       const category = "Hygiene";
       const gender = $('#hyInputGender').val();
       const numReq = $('#hyInputNumber').val();
@@ -138,7 +118,9 @@ $('#form4').on('submit', event => {
       const age = $('#hyInputAge').val();
       const dropOffLocation = $('#hyInputCity').val();
       const maxNum = $('#hyInputMaxNum').val();
-      alert(category + " " + gender + " " + numReq + " " + item + " " + age + " " + dropOffLocation + " " + maxNum);
+      alert("Appeal for " + item + " added successfully.");
+      
+      //push user input to firebase
       appeals.child(category).child(id).set({
           "appealid": id,
           "category": category,
@@ -151,9 +133,9 @@ $('#form4').on('submit', event => {
       });
 });
         
-//Kids appeals from form
+//Kids appeals form
 $('#form5').on('submit', event => {
-        //event.preventDefault();
+        //get input values
         const category = "Kids";
         const gender = $('#kInputGender').val();
         const numReq = $('#kInputNumber').val();
@@ -161,7 +143,9 @@ $('#form5').on('submit', event => {
         const age = $('#inputAge').val();
         const dropOffLocation = $('#kInputCity').val();
         const maxNum = $('#kInputMaxNum').val();
-        alert(category + " " + gender + " " + numReq + " " + item + " " + age + " " + dropOffLocation + " " + maxNum);
+        alert("Appeal for " + item + " added successfully.");
+    
+        //push user input to firebase
         appeals.child(category).child(id).set({
             "appealid": id,
             "category": category,
@@ -174,16 +158,18 @@ $('#form5').on('submit', event => {
         });
 });
 
-//Misc appeals from form
+//Misc appeals form
 $('#form6').on('submit', event => {
-    //event.preventDefault();
+    //get input values
     const category = "Miscellaneous";
     const item = $('#mInputItem').val();
     const numReq = $('#mInputNumber').val();
     const description = $('#inputDescription').val();
     const dropOffLocation = $('#mInputCity').val();
     const maxNum = $('#mInputMaxNum').val();
-    alert(category + " " + item + " " + numReq + " " + description + " " + dropOffLocation + " " + maxNum);
+    alert("Appeal for " + item + " added successfully.");
+    
+    //push user input to firebase
     appeals.child(category).child(id).set({
         "appealid": id,
         "category": category,
@@ -195,132 +181,211 @@ $('#form6').on('submit', event => {
     });
 });
 
-//get donations from db
-var donRefC = firebase.database().ref("Donations/Clothing/");
-//get all data and grab data upon updates on child nodes
-donRefC.on("child_added", function(snapshot) {
-var newDonation = snapshot.val();
-var returnArr = [];
-//console.log(newDonation);
-    
-returnArr.push(newDonation);
 
-for(var i = 0; i < returnArr.length; i++){
-    for(var value in returnArr[i]){
-        var newObj = returnArr[i];
-        var x = document.createElement("TD");
-        var t = document.createTextNode(newObj[value]);
-        x.appendChild(t);
-        document.getElementById("clothTable").appendChild(x);
-    }
- document.getElementById("clothTable").appendChild(x)
- var r = document.createElement("TR");
- document.getElementById("clothTable").appendChild(r);
-}
+//store reference to donations/clothing
+var donRefC = firebase.database().ref("Donations/Clothing/");
+//snapshot 'clothing' upon updates
+donRefC.on("child_added", function(snapshot) {
+//get values from each JSON object in branch
+var newDonation = snapshot.val();
+var key = snapshot.key;
+        //table content
+        var content = "";
+            //add new table row with snapshot vals
+            content += "<tr>";
+            content += "<td id>" + newDonation.donationId + "</td>";
+            content += "<td>" + newDonation.item + "</td>";
+            content += "<td>" + newDonation.age + "</td>";
+            content += "<td>" + newDonation.gender + "</td>";
+            content += "<td>" + newDonation.size + "</td>";
+            content += "<td>" + newDonation.amount + "</td>";
+            content += "<td>" + newDonation.location + "</td>";
+            content += "<td>" + newDonation.date + "</td>";
+            content += "<td>" + newDonation.userName + "</td>";
+            content += "<td>" + newDonation.userEmail + "</td>";
+            content += "<td>" + newDonation.userNumber + "</td>";
+            content += "<td><button id='btnId' onClick='deleteRow(this)'>" + "Donated" + "<button></td>";
+            content += "</tr>";
+            $("#clothTable").append(content);
 });
 
-//get donations from db
+//get snapshot of food donations and add to table
 var donRefF = firebase.database().ref("Donations/Food/");
-//get all data and grab data upon updates on child nodes
 donRefF.on("child_added", function(snapshot) {
 var newDonation = snapshot.val();
-var returnArr = [];
-//console.log(newDonation);
+var key = snapshot.key;
+        var content = "";
+            content += "<tr>";
+            content += "<td>" + newDonation.donationId + "</td>";
+            content += "<td>" + newDonation.item + "</td>";
+            content += "<td>" + newDonation.amount + "</td>";
+            content += "<td>" + newDonation.expiryDate + "</td>";
+            content += "<td>" + newDonation.date + "</td>";
+            content += "<td>" + newDonation.location + "</td>";
+            content += "<td>" + newDonation.userName + "</td>";
+            content += "<td>" + newDonation.userEmail + "</td>";
+            content += "<td>" + newDonation.userNumber + "</td>";
+            content += "<td><button id='btnId onClick='deleteRow(this)'>" + "Donated" + "<button></td>";
+            content += "</tr>";
+            $("#FoodTable").append(content);
     
-returnArr.push(newDonation);
-
-for(var i = 0; i < returnArr.length; i++){
-    for(var value in returnArr[i]){
-        var newObj = returnArr[i];
-        var x = document.createElement("TD");
-        var t = document.createTextNode(newObj[value]);
-        x.appendChild(t);
-        document.getElementById("FoodTable").appendChild(x);
-    }
- var r = document.createElement("TR");
- document.getElementById("FoodTable").appendChild(r);
-    
-}
 });
     
-
-//get donations from db
-var donRefHome = firebase.database().ref("Donations/Household/");
-//get all data and grab data upon updates on child nodes
-donRefHome.on("child_added", function(snapshot) {
+//get snapshot of household donations and add to table
+var donRefH = firebase.database().ref("Donations/Household/");
+donRefH.on("child_added", function(snapshot) {
 var newDonation = snapshot.val();
-var returnArr = [];
-//console.log(newDonation);
-    
-returnArr.push(newDonation);
-
-for(var i = 0; i < returnArr.length; i++){
-    for(var value in returnArr[i]){
-        var newObj = returnArr[i];
-        var x = document.createElement("TD");
-        var t = document.createTextNode(newObj[value]);
-        x.appendChild(t);
-        document.getElementById("homeTable").appendChild(x);
-    }
- var r = document.createElement("TR");
- document.getElementById("homeTable").appendChild(r);
-    
-}
+var key = snapshot.key;
+        var content = "";
+            content += "<tr>";
+            content += "<td>" + newDonation.donationId + "</td>";
+            content += "<td>" + newDonation.item + "</td>";
+            content += "<td>" + newDonation.type + "</td>";
+            content += "<td>" + newDonation.condition + "</td>";
+            content += "<td>" + newDonation.amount + "</td>";
+            content += "<td>" + newDonation.location + "</td>";
+            content += "<td>" + newDonation.date + "</td>";
+            content += "<td>" + newDonation.userName + "</td>";
+            content += "<td>" + newDonation.userEmail + "</td>";
+            content += "<td>" + newDonation.userNumber + "</td>";
+            content += "<td><button id='btnId'>" + "Donated" + "<button></td>";
+            content += "</tr>";
+        $("#homeTable").append(content);
 });
 
-//get donations from db
-var donRefHyg = firebase.database().ref("Donations/Hygiene/");
-//get all data and grab data upon updates on child nodes
-donRefHyg.on("child_added", function(snapshot) {
+//get snapshot of hygiene donations and add to table
+var donRefHy = firebase.database().ref("Donations/Hygiene/");
+donRefHy.on("child_added", function(snapshot) {
 var newDonation = snapshot.val();
-var returnArr = [];
-//console.log(newDonation);
-    
-returnArr.push(newDonation);
-
-for(var i = 0; i < returnArr.length; i++){
-    for(var value in returnArr[i]){
-        var newObj = returnArr[i];
-        var x = document.createElement("TD");
-        var t = document.createTextNode(newObj[value]);
-        x.appendChild(t);
-        document.getElementById("hygTable").appendChild(x);
-    }
- var r = document.createElement("TR");
- document.getElementById("hygTable").appendChild(r);
-    
-}
+var key = snapshot.key;
+        var content = "";
+            content += "<tr>";
+            content += "<td>" + newDonation.donationId + "</td>";
+            content += "<td>" + newDonation.item + "</td>";
+            content += "<td>" + newDonation.gender + "</td>";
+            content += "<td>" + newDonation.age + "</td>";
+            content += "<td>" + newDonation.amount + "</td>";
+            content += "<td>" + newDonation.location + "</td>";
+            content += "<td>" + newDonation.date + "</td>";
+            content += "<td>" + newDonation.userName + "</td>";
+            content += "<td>" + newDonation.userEmail + "</td>";
+            content += "<td>" + newDonation.userNumber + "</td>";
+            content += "<td><button id='btnId'>" + "Donated" + "<button></td>";
+            content += "</tr>";
+        $("#hygTable").append(content);
 });
-   
-document.getElementById("defaultOpen").click();
 
-//show tab content
+//get snapshot of kids donations and add to table
+var donRefKi = firebase.database().ref("Donations/Kids/");
+donRefKi.on("child_added", function(snapshot) {
+var newDonation = snapshot.val();
+var key = snapshot.key;
+        var content = "";
+            content += "<tr>";
+            content += "<td>" + newDonation.donationId + "</td>";
+            content += "<td>" + newDonation.item + "</td>";
+            content += "<td>" + newDonation.age + "</td>";
+            content += "<td>" + newDonation.gender + "</td>";
+            content += "<td>" + newDonation.amount + "</td>";
+            content += "<td>" + newDonation.location + "</td>";
+            content += "<td>" + newDonation.date + "</td>";
+            content += "<td>" + newDonation.userName + "</td>";
+            content += "<td>" + newDonation.userEmail + "</td>";
+            content += "<td>" + newDonation.userNumber + "</td>";
+            content += "<td><button id='btnId'>" + "Donated" + "<button></td>";
+            content += "</tr>";
+        $("#kidsTable").append(content);
+});
+
+//get snapshot of misc donations and add to table
+var donRefM = firebase.database().ref("Donations/Miscellaneous/");
+donRefM.on("child_added", function(snapshot) {
+var newDonation = snapshot.val();
+var key = snapshot.key;
+        var content = "";
+            content += "<tr>";
+            content += "<td>" + newDonation.donationId + "</td>";
+            content += "<td>" + newDonation.item + "</td>";
+            content += "<td>" + newDonation.amount + "</td>";
+            content += "<td>" + newDonation.location + "</td>";
+            content += "<td>" + newDonation.date + "</td>";
+            content += "<td>" + newDonation.userName + "</td>";
+            content += "<td>" + newDonation.userEmail + "</td>";
+            content += "<td>" + newDonation.userNumber + "</td>";
+            content += "<td><button id='btnId'>" + "Donated" + "<button></td>";
+            content += "</tr>";
+        $("#miscTable").append(content);
+});
+
+
+//remove donation from incoming table when delivered
+function deleteRow(r) {
+    //get reference to table row when donated
+    var i = r.parentNode.parentNode.rowIndex;
+    //get info to be passed to delvered table
+    var donKey = document.getElementById("clothTable").rows[i].cells[0].innerHTML;
+    var donItem = document.getElementById("clothTable").rows[i].cells[1].innerHTML;
+    var donAm = document.getElementById("clothTable").rows[i].cells[5].innerHTML;
+    var donLoc = document.getElementById("clothTable").rows[i].cells[6].innerHTML;
+    var donDate = document.getElementById("clothTable").rows[i].cells[7].innerHTML;
+    var donator = document.getElementById("clothTable").rows[i].cells[8].innerHTML;
+    var donContact = document.getElementById("clothTable").rows[i].cells[10].innerHTML;
+    alert("Item Donated Successfully!");
+    //add to delievered branch in db
+    donated.child(donKey).set({
+        "appealid": donKey,
+        "item": donItem,
+        "amount": donAm,
+        "location": donLoc,
+        "date": donDate,
+        "name": donator,
+        "contact": donContact
+    });
+    //remove from database and clothing table without refreshing page
+    firebase.database().ref("Donations/Clothing").child(donKey).remove(); 
+    document.getElementById("clothTable").deleteRow(i);
+}
+
+//delivered db branch reference
+var delRef = firebase.database().ref("Delivered/");
+//get snapshot upon updates
+delRef.on("child_added", function(snapshot) {
+//JSON object values
+var deliveries = snapshot.val();
+    //add to donated table
+    var donatedTab = "";
+    donatedTab += "<tr>";
+    donatedTab += "<td>" + deliveries.appealid + "</td>";
+    donatedTab += "<td>" + deliveries.item + "</td>";
+    donatedTab += "<td>" + deliveries.amount + "</td>";
+    donatedTab += "<td>" + deliveries.location + "</td>";
+    donatedTab += "<td>" + deliveries.date + "</td>";
+    donatedTab += "<td>" + deliveries.name + "</td>";
+    donatedTab += "<td>" + deliveries.contact + "</td>";
+    donatedTab += "</tr>";
+    $("#donatedTable").append(donatedTab);
+});
+
+
+document.getElementById("clothingT").click();
+
+
+//display content from tabs on click
 function openCat(evt, catName) {
-    // Declare all variables
-    var i, tabcontent, tablinks;
+    var tabcontent = document.getElementsByClassName("tabcontent");
+    var tablinks = document.getElementsByClassName("tablinks");
 
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
+    // Get all tabcontent elements and hide them
+    for (var i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
     }
 
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
+    //remove active class from all tabs
+    for (var i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
 
-    // Show the current tab, and add an "active" class to the button that opened the tab
+    // tab on click() display the tabcontant and add class active
     document.getElementById(catName).style.display = "block";
     evt.currentTarget.className += " active";
 }
-// Sign in an existing user
-        /*firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
-              // Handle Errors
-              var errorCode = error.code;
-              var errorMessage = error.message;
-             alert(errorMessage);
-            });
-            alert(userEmail + userPass);*/
-            
