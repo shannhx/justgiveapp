@@ -204,7 +204,7 @@ var key = snapshot.key;
             content += "<td>" + newDonation.userName + "</td>";
             content += "<td>" + newDonation.userEmail + "</td>";
             content += "<td>" + newDonation.userNumber + "</td>";
-            content += "<td><button id='btnId' onClick='deleteRow(this)'>" + "Donated" + "<button></td>";
+            content += "<td><button id='btnId' onClick='deleteRow(this)' class='btn btn-danger'>" + "Donated" + "<button></td>";
             content += "</tr>";
             $("#clothTable").append(content);
 });
@@ -388,4 +388,32 @@ function openCat(evt, catName) {
     // tab on click() display the tabcontant and add class active
     document.getElementById(catName).style.display = "block";
     evt.currentTarget.className += " active";
+}
+
+//search clothing
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("searchInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("clothTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    td2 = tr[i].getElementsByTagName("td")[1];
+    td3 = tr[i].getElementsByTagName("td")[7];
+      if (td2) {
+        if (td2.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+      if (td3) {
+        if (td3.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
 }
