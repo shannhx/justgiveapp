@@ -22,7 +22,7 @@
     <!-- navigation bar -->
     <nav class="navbar navbar-expand-md navbar-default">
       <img src="logo_transparent.png" width= "4%" height="4%" id="smLogo">
-      <a class="navbar-brand" href="#">JustGive | Admin</a>
+      <a class="navbar-brand" href="home.html">JustGive | Admin</a>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -30,6 +30,9 @@
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="donations.html" id="navItem">Donations</a>
+          </li>
+            <li class="nav-item active">
+            <a class="nav-link" href="storage.html" id="navItem">Storage</a>
           </li>
         </ul>
           <ul class="navbar-nav navbar-right">
@@ -48,14 +51,13 @@
       <button class="tablinks" onclick="openCat(event, 'Hygiene');" id="hygieneT">Hygiene</button>
       <button class="tablinks" onclick="openCat(event, 'Kids');" id="kidsT">Kids</button>
       <button class="tablinks" onclick="openCat(event, 'Misc');" id="miscT">Miscellaneous</button>
-      <button id = "donatedS" class="tablinks" onclick="openCat(event, 'Donated');">Delivered</button>
     </div>
 
     <!-- Tab content -->
         <!-- Clothing Form -->
         <div id="Clothing" class="tabcontent">
           <h5 id="clothingTable" style="padding-left:50px">Incoming Clothing Donations</h5>
-            <input type="text" id="searchInput" onkeyup="myFunction()" placeholder="Search for items..." title="Type in a name">
+            <input type="text" id="searchInput" onkeyup="myFunction1()" placeholder="Search for items..." title="Type in a name">
             <table id="clothTable" class = "tables">
                 <th>ID</th>
                 <th>Item</th> 
@@ -74,7 +76,7 @@
         <!-- Food Form -->
       <div id="Food" class="tabcontent">
           <h5 id="foodTable" style="padding-left:50px">Incoming Food Donations</h5>
-           <input type="text" id="searchInput" onkeyup="myFunction()" placeholder="Search for items..." title="Type in a name">
+           <input type="text" id="searchInput2" onkeyup="myFunction2()" placeholder="Search for items..." title="Type in a name">
             <table id="FoodTable" class = "tables">
                 <th>ID</th>
                 <th>Item</th>
@@ -90,8 +92,8 @@
 
         <!-- Household Form -->
         <div id="Household" class="tabcontent">
-          <h5 id="householdTable" style="padding-left:50px">Household Item Donations</h5>
-          <input type="text" id="searchInput" onkeyup="myFunction()" placeholder="Search for items..." title="Type in a name">
+          <h5 id="householdTable" style="padding-left:50px">Incoming Household Donations</h5>
+          <input type="text" id="searchInput3" onkeyup="myFunction3()" placeholder="Search for items..." title="Type in a name">
           <table id="homeTable" class = "tables">
                 <th>ID</th>
                 <th>Item</th> 
@@ -110,7 +112,7 @@
       <!--Hygiene Product Form -->
       <div id="Hygiene" class="tabcontent">
           <h5 id="hygieneTable" style="padding-left:50px">Hygiene Product Donations</h5>
-           <input type="text" id="searchInput" onkeyup="myFunction()" placeholder="Search for items..." title="Type in a name">
+           <input type="text" id="searchInput4" onkeyup="myFunction4()" placeholder="Search for items..." title="Type in a name">
           <table id="hygTable" class = "tables">
                 <th>ID</th>
                 <th>Item</th> 
@@ -130,7 +132,7 @@
         <!-- Kids Form -->
         <div id="Kids" class="tabcontent">
           <h5 id="tableKids" style="padding-left:50px">Add Kids Appeal</h5>
-           <input type="text" id="searchInput" onkeyup="myFunction()" placeholder="Search for items..." title="Type in a name">
+           <input type="text" id="searchInput5" onkeyup="myFunction5()" placeholder="Search for items..." title="Type in a name">
           <table id="kidsTable" class = "tables">
                 <th>ID</th>
                 <th>Item</th> 
@@ -148,7 +150,7 @@
         <!-- Misc Form -->
         <div id="Misc" class="tabcontent">
           <h5 id="addMisc" style="padding-left:50px">Add Miscellaneous Appeal</h5>
-           <input type="text" id="searchInput" onkeyup="myFunction()" placeholder="Search for items..." title="Type in a name">
+           <input type="text" id="searchInput6" onkeyup="myFunction6()" placeholder="Search for items..." title="Type in a name">
           <table id="miscTable" class = "tables">
                 <th>ID</th>
                 <th>Item</th> 
@@ -156,20 +158,6 @@
                 <th>Location</th>
                 <th>Donation Date</th>
                 <th>Donator Email</th>
-                <th>Donator</th>
-                <th>Contact Number</th>
-            </table>
-        </div>
-      
-      <div id="Donated" class="tabcontent">
-          <h5 id="donatedTab" style="padding-left:50px">Donated Items</h5>
-           <input type="text" id="searchInput" onkeyup="myFunction()" placeholder="Search for items..." title="Type in a name">
-          <table id="donatedTable" class = "tables">
-                <th>ID</th>
-                <th>Item</th> 
-                <th>Amount</th>
-                <th>Location</th>
-                <th>Donation Date</th>
                 <th>Donator</th>
                 <th>Contact Number</th>
             </table>

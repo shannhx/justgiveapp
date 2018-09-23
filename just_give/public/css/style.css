@@ -77,9 +77,61 @@ body{
   }
 }
 
+
+#logohome {
+    float:left;
+    margin-left: 70px;
+    padding: 10px;
+    margin-top: 70px;
+    color: #444444;
+}
+
+#welcome {
+    float:left;
+    margin-left: 70px;
+    width: 50%;
+    padding: 10px;
+    margin-top: 130px;
+    color: #444444;
+}
+
+footer { 
+    display: block;
+    float:bottom;
+}
+
+#wel-text {
+    font-size: 20px;
+}
+
+#newCatSel {
+    float: right;
+    font-size: 16px;
+    padding-right: 400px;
+    color: #444444;
+    margin-top: 100px;
+}
+
 #smLogo {
     padding-right:10px;
 }
+
+#btnId {
+  background: #ecf0f1;
+  border:none;
+  border-color: 0;
+  color: #ffffff;
+  font-size: 10px;
+  padding: 4px;
+  border-radius: 4px;
+  position: relative;
+  vertical-align: top;
+  color:#454545;
+  text-align: center;
+  border-bottom: 2px solid #dadedf;
+  cursor: pointer;
+}
+
 main-color-bg{
     background-color: #def2f1 !important;
     border-color: #03A9F4 !important;
@@ -96,6 +148,10 @@ main-color-bg{
     color: white;
     padding: 4px;
     
+}
+
+#Donated {
+    margin-top:30px;
 }
 
 #log-out:hover, #navItem:hover {
@@ -147,7 +203,14 @@ th, td {
     background-color: #f1f1f1;
 }
 
-#searchInput {
+#totalBox {
+    float:right;
+    margin-right:250px;
+    margin-top:100px;
+    font-size: 15px;
+}
+
+#searchInput, #searchInput2,  #searchInput3, #searchInput4, #searchInput5, #searchInput6, #searchInput7 {
     background-image: url('https://png.icons8.com/material-rounded/20/BBBBB1/search.png');
     background-position: 7px 7px; /* Position the search icon */
     background-repeat: no-repeat; /* Do not repeat the icon image */

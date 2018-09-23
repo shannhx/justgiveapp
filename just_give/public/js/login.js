@@ -15,6 +15,6 @@ function login(){
 firebase.auth().onAuthStateChanged(function(user) {
   this.user = firebase.auth().currentUser;
     if(this.user){
-        location = "admin.html";
+        location = "home.html";
     }
 });

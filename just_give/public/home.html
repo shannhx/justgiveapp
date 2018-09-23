@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Admin | Dashboard</title>
+
+    <!-- Styling -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
+      
+    <!-- add firebase -->
+      <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+      
+      <script src="/__/firebase/5.4.2/firebase-app.js"></script>
+      <script src="/__/firebase/5.4.2/firebase-auth.js"></script>
+      <script src="/__/firebase/5.4.2/firebase-database.js"></script>
+  </head>
+
+  <body>
+    <!-- navigation bar -->
+    <nav class="navbar navbar-expand-md navbar-default">
+      <img src="logo_transparent.png" width= "4%" height="4%" id="smLogo">
+      <a class="navbar-brand" href="#">JustGive | Admin</a>
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="admin.html" id="navItem">Appeals</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="donations.html" id="navItem">Donations</a>
+          </li>
+            <li class="nav-item active">
+            <a class="nav-link" href="storage.html" id="navItem">Storage</a>
+          </li>
+        </ul>
+          <ul class="navbar-nav navbar-right">
+          <li class="nav-item active">
+            <a class="nav-link"  href="login.html" id="log-out" onClick="logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+      
+      
+      <img src="logo_transparent2.png" width= "30%" height="30%" id="logohome">
+      <div id="welcome">
+          <h3>Welcome to Just Give,</h3>
+          <div id="wel-text">
+              <p><br/>To get started, click an option on the navigation bar above:<br/><br/><i class="fas fa-edit"></i>   Click on <a href="admin.html">'Appeals'</a> to add an appeal.
+              <br/><br/><i class="fas fa-list-ul"></i>   Click on <a href="donations.html">'Donations'</a> to view incoming donations.
+              <br/><br/><i class="fas fa-box-open"></i>   Click on <a href>'Storage'</a> to see donated items.
+              </p>
+          </div>
+      </div>
+      
+            <main role="main" class="container">
+            </main>
+      
+
+            <!-- link to js bootstrap files -->
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+            <!--Link to js files-->
+            <script src="js/admin.js"></script>
+          </body>
+        </html>

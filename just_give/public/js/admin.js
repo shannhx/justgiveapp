@@ -35,7 +35,7 @@ function logout(){
 
 //clothing appeals form
 $('#form1').on('submit', event => {
-    //event.preventDefault();
+    //get input value
     const category = "Clothing";
     const gender = $('#cInputGender').val();
     const numReq = $('#cInputNumber').val();
@@ -59,7 +59,7 @@ $('#form1').on('submit', event => {
       "maxNum": maxNum
     });
 });
-    
+
 //food appeals form
 $('#form2').on('submit', event => {
       //get input values
@@ -204,7 +204,7 @@ var key = snapshot.key;
             content += "<td>" + newDonation.userName + "</td>";
             content += "<td>" + newDonation.userEmail + "</td>";
             content += "<td>" + newDonation.userNumber + "</td>";
-            content += "<td><button id='btnId' onClick='deleteRow(this)' class='btn btn-danger'>" + "Donated" + "<button></td>";
+            content += "<td><button id='btnId' onClick='deleteRow(this)'>" + "Donated" + "<button></td>";
             content += "</tr>";
             $("#clothTable").append(content);
 });
@@ -225,7 +225,7 @@ var key = snapshot.key;
             content += "<td>" + newDonation.userName + "</td>";
             content += "<td>" + newDonation.userEmail + "</td>";
             content += "<td>" + newDonation.userNumber + "</td>";
-            content += "<td><button id='btnId onClick='deleteRow(this)'>" + "Donated" + "<button></td>";
+            content += "<td><button id='btnId' onClick='deleteRowF(this)'>" + "Donated" + "<button></td>";
             content += "</tr>";
             $("#FoodTable").append(content);
     
@@ -248,7 +248,7 @@ var key = snapshot.key;
             content += "<td>" + newDonation.userName + "</td>";
             content += "<td>" + newDonation.userEmail + "</td>";
             content += "<td>" + newDonation.userNumber + "</td>";
-            content += "<td><button id='btnId'>" + "Donated" + "<button></td>";
+            content += "<td><button id='btnId' onClick='deleteRowH(this)'>" + "Donated" + "<button></td>";
             content += "</tr>";
         $("#homeTable").append(content);
 });
@@ -270,7 +270,7 @@ var key = snapshot.key;
             content += "<td>" + newDonation.userName + "</td>";
             content += "<td>" + newDonation.userEmail + "</td>";
             content += "<td>" + newDonation.userNumber + "</td>";
-            content += "<td><button id='btnId'>" + "Donated" + "<button></td>";
+            content += "<td><button id='btnId' onClick='deleteRowHy(this)'>" + "Donated" + "<button></td>";
             content += "</tr>";
         $("#hygTable").append(content);
 });
@@ -292,7 +292,7 @@ var key = snapshot.key;
             content += "<td>" + newDonation.userName + "</td>";
             content += "<td>" + newDonation.userEmail + "</td>";
             content += "<td>" + newDonation.userNumber + "</td>";
-            content += "<td><button id='btnId'>" + "Donated" + "<button></td>";
+            content += "<td><button id='btnId' onClick='deleteRowK(this)'>" + "Donated" + "<button></td>";
             content += "</tr>";
         $("#kidsTable").append(content);
 });
@@ -312,7 +312,7 @@ var key = snapshot.key;
             content += "<td>" + newDonation.userName + "</td>";
             content += "<td>" + newDonation.userEmail + "</td>";
             content += "<td>" + newDonation.userNumber + "</td>";
-            content += "<td><button id='btnId'>" + "Donated" + "<button></td>";
+            content += "<td><button id='btnId' onClick='deleteRowM(this)'>" + "Donated" + "<button></td>";
             content += "</tr>";
         $("#miscTable").append(content);
 });
@@ -346,6 +346,142 @@ function deleteRow(r) {
     document.getElementById("clothTable").deleteRow(i);
 }
 
+function deleteRowF(r) {
+    //get reference to table row when donated
+    var i = r.parentNode.parentNode.rowIndex;
+    //get info to be passed to delvered table
+    var donKey = document.getElementById("FoodTable").rows[i].cells[0].innerHTML;
+    var donItem = document.getElementById("FoodTable").rows[i].cells[1].innerHTML;
+    var donAm = document.getElementById("FoodTable").rows[i].cells[2].innerHTML;
+    var donLoc = document.getElementById("FoodTable").rows[i].cells[5].innerHTML;
+    var donDate = document.getElementById("FoodTable").rows[i].cells[4].innerHTML;
+    var donator = document.getElementById("FoodTable").rows[i].cells[6].innerHTML;
+    var donContact = document.getElementById("FoodTable").rows[i].cells[8].innerHTML;
+    alert("Item Donated Successfully!");
+    //add to delievered branch in db
+    donated.child(donKey).set({
+        "appealid": donKey,
+        "item": donItem,
+        "amount": donAm,
+        "location": donLoc,
+        "date": donDate,
+        "name": donator,
+        "contact": donContact
+    });
+    //remove from database and clothing table without refreshing page
+    firebase.database().ref("Donations/Food").child(donKey).remove(); 
+    document.getElementById("FoodTable").deleteRow(i);
+}
+
+function deleteRowH(r) {
+    //get reference to table row when donated
+    var i = r.parentNode.parentNode.rowIndex;
+    //get info to be passed to delvered table
+    var donKey = document.getElementById("homeTable").rows[i].cells[0].innerHTML;
+    var donItem = document.getElementById("homeTable").rows[i].cells[1].innerHTML;
+    var donAm = document.getElementById("homeTable").rows[i].cells[4].innerHTML;
+    var donLoc = document.getElementById("homeTable").rows[i].cells[5].innerHTML;
+    var donDate = document.getElementById("homeTable").rows[i].cells[6].innerHTML;
+    var donator = document.getElementById("homeTable").rows[i].cells[7].innerHTML;
+    var donContact = document.getElementById("homeTable").rows[i].cells[9].innerHTML;
+    alert("Item Donated Successfully!");
+    //add to delievered branch in db
+    donated.child(donKey).set({
+        "appealid": donKey,
+        "item": donItem,
+        "amount": donAm,
+        "location": donLoc,
+        "date": donDate,
+        "name": donator,
+        "contact": donContact
+    });
+    //remove from database and clothing table without refreshing page
+    firebase.database().ref("Donations/Household").child(donKey).remove(); 
+    document.getElementById("homeTable").deleteRow(i);
+}
+
+function deleteRowHy(r) {
+    //get reference to table row when donated
+    var i = r.parentNode.parentNode.rowIndex;
+    //get info to be passed to delvered table
+    var donKey = document.getElementById("hygTable").rows[i].cells[0].innerHTML;
+    var donItem = document.getElementById("hygTable").rows[i].cells[1].innerHTML;
+    var donAm = document.getElementById("hygTable").rows[i].cells[4].innerHTML;
+    var donLoc = document.getElementById("hygTable").rows[i].cells[5].innerHTML;
+    var donDate = document.getElementById("hygTable").rows[i].cells[6].innerHTML;
+    var donator = document.getElementById("hygTable").rows[i].cells[7].innerHTML;
+    var donContact = document.getElementById("hygTable").rows[i].cells[9].innerHTML;
+    alert("Item Donated Successfully!");
+    //add to delievered branch in db
+    donated.child(donKey).set({
+        "appealid": donKey,
+        "item": donItem,
+        "amount": donAm,
+        "location": donLoc,
+        "date": donDate,
+        "name": donator,
+        "contact": donContact
+    });
+    //remove from database and clothing table without refreshing page
+    firebase.database().ref("Donations/Hygiene").child(donKey).remove(); 
+    document.getElementById("hygTable").deleteRow(i);
+}
+
+function deleteRowK(r) {
+    //get reference to table row when donated
+    var i = r.parentNode.parentNode.rowIndex;
+    //get info to be passed to delvered table
+    var donKey = document.getElementById("kidsTable").rows[i].cells[0].innerHTML;
+    var donItem = document.getElementById("kidsTable").rows[i].cells[1].innerHTML;
+    var donAm = document.getElementById("kidsTable").rows[i].cells[4].innerHTML;
+    var donLoc = document.getElementById("kidsTable").rows[i].cells[5].innerHTML;
+    var donDate = document.getElementById("kidsTable").rows[i].cells[6].innerHTML;
+    var donator = document.getElementById("kidsTable").rows[i].cells[7].innerHTML;
+    var donContact = document.getElementById("kidsTable").rows[i].cells[9].innerHTML;
+    alert("Item Donated Successfully!");
+    //add to delievered branch in db
+    donated.child(donKey).set({
+        "appealid": donKey,
+        "item": donItem,
+        "amount": donAm,
+        "location": donLoc,
+        "date": donDate,
+        "name": donator,
+        "contact": donContact
+    });
+    //remove from database and clothing table without refreshing page
+    firebase.database().ref("Donations/Kids").child(donKey).remove(); 
+    document.getElementById("kidsTable").deleteRow(i);
+}
+
+
+function deleteRowM(r) {
+    //get reference to table row when donated
+    var i = r.parentNode.parentNode.rowIndex;
+    //get info to be passed to delvered table
+    var donKey = document.getElementById("miscTable").rows[i].cells[0].innerHTML;
+    var donItem = document.getElementById("miscTable").rows[i].cells[1].innerHTML;
+    var donAm = document.getElementById("miscTable").rows[i].cells[2].innerHTML;
+    var donLoc = document.getElementById("miscTable").rows[i].cells[3].innerHTML;
+    var donDate = document.getElementById("miscTable").rows[i].cells[4].innerHTML;
+    var donator = document.getElementById("miscTable").rows[i].cells[5].innerHTML;
+    var donContact = document.getElementById("miscTable").rows[i].cells[7].innerHTML;
+    alert("Item Donated Successfully!");
+    //add to delievered branch in db
+    donated.child(donKey).set({
+        "appealid": donKey,
+        "item": donItem,
+        "amount": donAm,
+        "location": donLoc,
+        "date": donDate,
+        "name": donator,
+        "contact": donContact
+    });
+    //remove from database and clothing table without refreshing page
+    firebase.database().ref("Donations/Miscellaneous").child(donKey).remove(); 
+    document.getElementById("miscTable").deleteRow(i);
+}
+
 //delivered db branch reference
 var delRef = firebase.database().ref("Delivered/");
 //get snapshot upon updates
@@ -362,9 +498,34 @@ var deliveries = snapshot.val();
     donatedTab += "<td>" + deliveries.date + "</td>";
     donatedTab += "<td>" + deliveries.name + "</td>";
     donatedTab += "<td>" + deliveries.contact + "</td>";
+    donatedTab += "<td><button id='btnId' onClick='itemUsed(this)'>" + "Distributed" + "<button></td>";
     donatedTab += "</tr>";
     $("#donatedTable").append(donatedTab);
 });
+
+
+function itemUsed(r) {
+    //get reference to table row when donated
+    var i = r.parentNode.parentNode.rowIndex;
+    var donKey = document.getElementById("donatedTable").rows[i].cells[0].innerHTML;
+    var donAm = document.getElementById("donatedTable").rows[i].cells[2].innerHTML;
+    var amount = prompt("How many items were distributed?");
+    parseInt(amount, 10);
+    if(amount < donAm){
+        var newAm = donAm - amount;
+        firebase.database().ref("Delivered").child(donKey).update({
+        amount: newAm
+      });
+    } else if(amount > donAm){
+        alert("Value entered is more than amount in storage. " + amount + " of these are available for distribution." );
+    } else {
+        //remove from database and donated table without refreshing page
+        firebase.database().ref("Delivered").child(donKey).remove(); 
+        document.getElementById("donatedTable").deleteRow(i);
+    }
+    
+    location.reload();
+}
 
 
 document.getElementById("clothingT").click();
@@ -391,29 +552,145 @@ function openCat(evt, catName) {
 }
 
 //search clothing
-function myFunction() {
-  var input, filter, table, tr, td, i;
+function myFunction1() {
+  var input, filter, table, tr, td, td2, td3, i;
   input = document.getElementById("searchInput");
   filter = input.value.toUpperCase();
   table = document.getElementById("clothTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    td2 = tr[i].getElementsByTagName("td")[1];
-    td3 = tr[i].getElementsByTagName("td")[7];
-      if (td2) {
-        if (td2.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-      if (td3) {
-        if (td3.innerHTML.toUpperCase().indexOf(filter) > -1) {
+    td = tr[i].getElementsByTagName("td")[1];
+    td2 = tr[i].getElementsByTagName("td")[6];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";
       }
     }
   }
+}
+
+
+//search food
+function myFunction2() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("searchInput2");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("FoodTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+//search household
+function myFunction3() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("searchInput3");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("homeTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+
+//search hygiene
+function myFunction4() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("searchInput4");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("hygTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+//search kids
+function myFunction5() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("searchInput5");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("kidsTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+//search misc
+function myFunction6() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("searchInput6");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("miscTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+//search donated items
+var content = "";
+function myFunction7() {
+  var input, filter, table, tr, td,td2, am, total, i, items;
+  input = document.getElementById("searchInput7");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("donatedTable");
+  tr = table.getElementsByTagName("tr");
+  total = 0;
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    td2 = tr[i].getElementsByTagName("td")[2];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+            am = document.getElementById("donatedTable").rows[i].cells[2].innerHTML;
+            var am2 = parseInt(am, 10);
+            total = total + am2;
+            document.getElementById("numInStorage").innerHTML = total;
+            document.getElementById("totalBox").style.visibility = "visible";
+      } else {
+        tr[i].style.display = "none";
+      }  
+  } 
+}
 }
